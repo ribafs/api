@@ -8,6 +8,13 @@ Basicamente a API nos dá uma possibilidade de simplificar o desenvolvimento, po
 
 Isso pode ser feito de forma ágil, pois APIs costumam seguir um padrão de desenvolvimento, tornando fácil também a troca de uma API que faz o mesmo serviço que a outra
 
+## Exemplos
+
+[EM Javascript](javascript)
+
+[Em NodeJS](nodejs)
+
+[Em PHP e Laravel](php)
 
 ## Um exemplo prático de integração e troca de API
 
