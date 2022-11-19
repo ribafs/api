@@ -105,10 +105,27 @@ Rafael M. Tiba, CEO da Zappts.
 https://tiinside.com.br/17/09/2021/open-tudo-o-futuro-e-das-apis/
 
 ## Alguns Varbos HTTP para API 
-
+```
 GET 	Fetch resource(s)
 POST 	Create a new resource
 PATCH 	Update a new resource
 PUT 	Update a resource
 DELETE 	Delete a resource
+```
+
+## Ferramentas
+
+[Ferramentas.md](Ferramentas.md)
+
+## API para iniciantes
+
+[APIparaIniciantes.pdf](APIparaIniciantes.pdf)
+
+## Referências
+
+[Referencias.md](Referencias.md)
+
+## Licença
+
+MIT
 
