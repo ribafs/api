@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>Pokedex - Javascript</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="text-center my-5">Pokedex</h1>
+      <section
+        class="d-flex flex-wrap align-items-center justify-content-center"
+        id="list"
+      ></section>
+    </main>
+    <script>
+      const getPokemons = async () => {
+        const result = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=151`)
+        const data = await result.json()
+        const list = document.getElementById('list')
+        data.results.map((p, i) => {
+          list.insertAdjacentHTML(
+            'beforeend',
+            `<div class="text-dark bg-light m-3 p-3" style="width: 18rem;">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i + 1}.png"
+              class="card-img-top" alt="${p.name}">
+            <div class="card-body">
+              <h1 class="card-title tex-center">${p.name}</h1>
+            </div>
+          </div>`
+          )
+        })
+      }
+      getPokemons()
+    </script>
+  </body>
+</html>

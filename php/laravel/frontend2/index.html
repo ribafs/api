@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Using Fetch</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+</head>
+
+<body>    
+   <div class="container">
+       <h1 class="mt-3">Fetch API sample</h1>
+       <hr>
+       <button class="btn btn-primary" id="getCustomers">
+            Get Customers
+       </button>
+
+       <form action="">
+           <div class="form-group">
+               <label for="name" class="mt-3">Name:</label>
+               <input type="text" id="name" class="form-control">
+           </div>
+           <div class="form-group">
+               <label for="email">E-mail:</label>
+               <input type="text" id="email" class="form-control">
+               <input type="submit" class="btn btn-danger mt-3" id="submitCustomer" value="Insert a new">
+           </div>
+       </form>
+       <div id="customers"></div>
+   </div>
+
+    <script>
+    document.getElementById('getCustomers').addEventListener('click', getCustomers);
+    document.getElementById('submitCustomer').addEventListener('click', submitCustomer);
+
+    //submitting a customer
+    function submitCustomer(e){
+      e.preventDefault();
+
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+
+      fetch('http://localhost:8000/api/customers', {
+        method:'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-type':'application/json'
+        },
+        body:JSON.stringify({name:name, email:email})
+      })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+    }
+
+    //getting customers and filtering 
+    function getCustomers(){
+        fetch("http://localhost:8000/api/customers")
+        .then((res=>{
+            return res.json()
+        }))
+        .then((data=>{
+           let output = "<h3>Customers:</h3>"+
+                       "<div class='form-group'>"+
+                       "<input type='text' id='search' class='form-control' placeholder='search by email or ID..'>"+
+                       "</div>";
+            data.data.forEach(customer => {
+                output += `
+            <ul class="list-group mb-3" id="${customer.id}">
+              <li class="list-group-item"><strong>ID:</strong> ${customer.id}</li>
+              <li class="list-group-item"><strong>Name:</strong> ${customer.name}</li>
+              <li class="list-group-item"><strong>E-mail:</strong> ${customer.email}</li>
+            </ul>
+            `;
+            })
+
+            document.getElementById('customers').innerHTML = output;
+            //filtering function
+            document.getElementById('search').addEventListener('keyup', search);
+                
+            function search(){
+                let value = document.getElementById('search').value;
+                data.data.forEach(customer=>{
+                    if((customer.id == value)||(customer.email.indexOf(value) > -1)||(value == '')){
+                        document.getElementById(customer.id).style.display = 'block';                                
+                    } else{
+                        document.getElementById(customer.id).style.display = 'none';
+                    }
+                })
+            }            
+        }))
+    }
+    </script>
+</body>
+</html>

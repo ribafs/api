@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unorthodox - Insert Script Tag</title>
+  </head>
+  <body>
+    <!-- (A) HTML FORM -->
+    <form onsubmit="return bad();">
+      <input type="number" id="numA" value="123" required/>
+      <input type="number" id="numB" value="456" required/>
+      <input type="submit" value="Add"/>
+    </form>
+
+    <!-- (B) JAVASCRIPT -->
+    <script>
+    function bad () {
+      // (B1) URL SEARCH PARAMS (QUERY STRING)
+      var params = new URLSearchParams();
+      params.set("numA", document.getElementById("numA").value);
+      params.set("numB", document.getElementById("numB").value);
+      params.set("BAD", 1);
+
+      // (B2) CREATE NEW SCRIPT & INJECT INTO HEAD
+      // NOT A GOOD WAY, AND NOT RECOMMENDED.
+      var tag = document.createElement("script");
+      tag.src = encodeURI("0-dummy.php?" + params.toString());
+      document.head.appendChild(tag);
+      return false;
+    }
+    </script>
+  </body>
+</html>

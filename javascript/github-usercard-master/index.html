@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Git Usercard</title>
+</head>
+<body>
+    <div id="flex">
+    <form id="form-username">
+        <input id="input-username" class="shadow" type="text" placeholder="Insert your GitHub username">
+        <input id="button-submit" class="shadow" type="submit" value="Create!">
+    </form>
+    <div id="user-stuff" class="shadow">
+        <span id="my-picture"></span>
+        <h3 id="my-name"></h3>
+        <p id="my-bio"></p>
+        <ul id="list-numbers">
+            <li class="ul-numbers">Followers: <span id="my-followers">0</span></li>
+            <li class="ul-numbers">Following: <span id="following">0</span></li>
+            <li class="ul-numbers">Repos: <span id="my-repos">0</span></li>
+        </ul>
+    </div>
+</div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="js/script.js"></script>
+</body>
+</html>

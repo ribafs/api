@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:300,700);
+
+body 
+{
+    margin: 0;
+    background: #F2F2F2;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+}
+
+#container 
+{
+    display: grid;
+    grid-template-columns: 70px auto;
+    height: 100%;
+}
+
+#content 
+{
+    padding: 30px 50px;
+}
+
+#content ul 
+{
+    list-style-type: none;
+    margin:0;padding:0;
+}
+
+#content ul li 
+{
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 8px;
+}
+
+#content ul li a 
+{
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+    color:#00A8FF;
+}
+       
+#content ul li ul 
+{
+    margin-top: 20px;
+}
+
+#content ul li ul li 
+{
+    padding:0;
+}
+
+#content ul li ul li a 
+{
+    font-size: 1em;
+    font-weight: 300;
+}
+
+nav 
+{
+    background: #2D2E2E;
+    height: 100%;
+}
+
+nav ul 
+{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+}
+
+nav ul li a 
+{
+
+    color: #fff;
+    padding: 20px;
+    display: block;
+}
+
+nav ul li a .activated
+{
+    background-color: #00a8ff;
+}

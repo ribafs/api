@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AJAX Call PHP</title>
+  </head>
+  <body>
+    <!-- (A) HTML FORM -->
+    <form id="myForm" onsubmit="return ajaxcall();">
+      <input type="text" name="name" value="Jon" required/>
+      <input type="email" name="email" value="jon@doe.com" required/>
+      <input type="submit" value="Save"/>
+    </form>
+
+    <!-- (B) JAVASCRIPT -->
+    <script>
+    function ajaxcall () {
+      // (B1) GET FORM DATA
+      var data = new FormData(document.getElementById("myForm"));
+
+      // (B2) AJAX CALL
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "0-dummy.php");
+      xhr.onload = function () {
+        console.log(this.response);
+      };
+      xhr.send(data);
+      return false;
+    }
+    </script>
+  </body>
+</html>
